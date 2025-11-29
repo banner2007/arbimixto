@@ -1,8 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import binanceRoutes from "./routes/binance.js";
-import bitbexRoutes from "./routes/bitbex.js";
+import binanceRoutes from "./routes/binanceRoutes.js";
 
 dotenv.config();
 
@@ -10,12 +9,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Rutas
+// rutas
 app.use("/binance", binanceRoutes);
-app.use("/bitbex", bitbexRoutes);
 
 app.get("/", (req, res) => {
-  res.send("API de Arbitraje funcionando correctamente.");
+  res.json({ status: "Backend funcionando en Railway 🚀" });
 });
 
 const PORT = process.env.PORT || 3000;
