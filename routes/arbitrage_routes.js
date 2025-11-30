@@ -4,7 +4,6 @@ import { ExchangeManager } from "../services/exchange_manager.js";
 const router = express.Router();
 const manager = new ExchangeManager();
 
-// Ruta: /arbitrage/check/:symbol
 router.get("/check/:symbol", async (req, res) => {
   try {
     const symbol = req.params.symbol;
