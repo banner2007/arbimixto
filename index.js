@@ -9,10 +9,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Monta las rutas de los exchanges bajo sus respectivos prefijos
 app.use("/binance", binanceRoutes);
 app.use("/bitbex", bitbexRoutes);
 app.use("/arbitrage", arbitrageRoutes);
 
+// Ruta raíz para verificar que el backend esté activo
 app.get("/", (req, res) => {
   res.send("Backend Arbitraje Activo");
 });
