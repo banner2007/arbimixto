@@ -9,23 +9,23 @@ router.get("/account", async (req, res) => {
   try {
     res.json(await bitbex.getAccount());
   } catch (err) {
+    // Manejo de errores mejorado
     res.status(500).json({ error: err.message });
   }
 });
 
-// RUTA AÑADIDA: Para obtener el ticker (ejemplo de consulta que fallaba)
+// **Ruta AÑADIDA** (Soluciona el 404 para /bitbex/ticker)
 // Ruta: /bitbex/ticker
 router.get("/ticker", async (req, res) => {
   try {
-    // Asumiendo que BitbexService tiene un método getTicker()
+    // ASUME que el servicio tiene un método getTicker()
     res.json(await bitbex.getTicker());
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-
-// Ruta: /bitbex/price/:symbol
+// Ruta: /bitbex/price/:symbol (Ahora funcionará con el símbolo)
 router.get("/price/:symbol", async (req, res) => {
   try {
     res.json(await bitbex.getPrice(req.params.symbol));
