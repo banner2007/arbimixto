@@ -20,10 +20,10 @@ router.get("/account", async (req, res) => {
   }
 });
 
-// **AÑADIDO:** Soluciona el 404 para /binance/ticker
+// RUTA CORREGIDA: Cambiamos getTicker() por getPrices()
 router.get("/ticker", async (req, res) => {
   try {
-    res.json(await binance.getTicker());
+    res.json(await binance.getPrices());
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
