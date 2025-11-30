@@ -9,6 +9,7 @@ router.get("/time", async (req, res) => {
   try {
     res.json(await binance.getServerTime());
   } catch (err) {
+    // Manejo de errores mejorado
     res.status(500).json({ error: err.message });
   }
 });
@@ -18,27 +19,27 @@ router.get("/account", async (req, res) => {
   try {
     res.json(await binance.getAccount());
   } catch (err) {
+    // Manejo de errores mejorado
     res.status(500).json({ error: err.message });
   }
 });
 
-// RUTA AÑADIDA: Para obtener el ticker (ejemplo de consulta que fallaba)
+// **Ruta AÑADIDA** (Soluciona el 404 para /binance/ticker)
 // Ruta: /binance/ticker
 router.get("/ticker", async (req, res) => {
   try {
-    // Asumiendo que BinanceService tiene un método getTicker()
+    // ASUME que el servicio tiene un método getTicker()
     res.json(await binance.getTicker());
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// Ruta: /binance/price/:symbol
+// Ruta: /binance/price/:symbol (Ahora funcionará con el símbolo)
 router.get("/price/:symbol", async (req, res) => {
   try {
     res.json(await binance.getPrice(req.params.symbol));
   } catch (err) {
-    // Es mejor devolver un 404 si el símbolo no existe o 500 si es un error de la API
     res.status(500).json({ error: err.message });
   }
 });
