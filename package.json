@@ -4,7 +4,8 @@
   "description": "App personal para analizar anuncios con Meta Ad Library + Google AI Studio",
   "main": "src/index.js",
   "scripts": {
-    "dev": "node src/index.js"
+    "dev": "node src/index.js",
+    "start": "node src/index.js"
   },
   "dependencies": {
     "axios": "^1.6.7",
